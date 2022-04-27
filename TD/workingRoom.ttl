@@ -1,0 +1,29 @@
+@prefix eve: <http://w3id.org/eve#> .
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+@prefix htv: <http://www.w3.org/2011/http#> .
+@prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
+@prefix js: <https://www.w3.org/2019/wot/json-schema#> .
+
+<http://localhost:5000/smartbuilding/rooms/workingroom> a eve:WorkspaceArtifact, td:Thing;
+  td:title "workingRoom";
+  td:hasActionAffordance [ a td:ActionAffordance, eve:MakeArtifact;
+      td:name "makeArtifact";
+      td:hasForm [
+          hctl:forContentType "application/json";
+          hctl:hasOperationType td:invokeAction;
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/workingroom/artifacts/>;
+          htv:methodName "POST"
+        ];
+      td:hasInputSchema [ a js:ObjectSchema;
+          js:properties [ a eve:ArtifactClass, js:StringSchema;
+              js:propertyName "artifactClass"
+            ], [ a eve:ArtifactName, js:StringSchema;
+              js:propertyName "artifactName"
+            ], [ a js:ArraySchema;
+              js:propertyName "initParams"
+            ];
+          js:required "artifactClass", "artifactName"
+        ]
+    ];
+  eve:contains <http://localhost:5000/smartbuilding/rooms/workingroom/artifacts/lightbulb3>,
+    <http://localhost:5000/smartbuilding/rooms/workingroom/artifacts/lightbulb4> .

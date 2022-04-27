@@ -1,0 +1,41 @@
+
+@prefix eve: <http://w3id.org/eve#> .
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+@prefix iot: <http://iotschema.org/> .
+@prefix htv: <http://www.w3.org/2011/http#> .
+@prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
+@prefix js: <https://www.w3.org/2019/wot/json-schema#> .
+
+<http://localhost:5000/smartbuilding/rooms/workingroom/artifacts/lightbulb3>
+  a td:Thing, eve:Artifact, iot:Light, iot:BinarySwitch;
+  td:hasActionAffordance [ a td:ActionAffordance, iot:SwitchOn;
+      td:title "Switch On";
+      td:name "switchOn";
+      td:hasForm [
+          htv:methodName "PUT";
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/workingroom/artifacts/lightbulb3/switchOn>;
+          hctl:forContentType "application/json";
+          hctl:hasOperationType td:invokeAction
+        ]
+    ], [ a td:ActionAffordance, iot:SwitchOff;
+      td:title "Switch Off";
+      td:name "switchOff";
+      td:hasForm [
+          htv:methodName "PUT";
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/workingroom/artifacts/lightbulb3/switchOff>;
+          hctl:forContentType "application/json";
+          hctl:hasOperationType td:invokeAction
+        ]
+    ];
+  td:hasPropertyAffordance [ a td:PropertyAffordance, js:StringSchema;
+      td:title "Get State";
+      td:name "state";
+      td:hasForm [
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/workingroom/artifacts/lightbulb3/state>;
+          hctl:forContentType "application/json";
+          hctl:hasOperationType td:readProperty
+        ];
+      td:isObservable false;
+    ];
+  td:title "lightbulb3";
+  td:hasBase <http://localhost:5000/smartbuilding/rooms/workingroom/artifacts/lightbulb3/> .

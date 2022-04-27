@@ -1,0 +1,19 @@
+@prefix eve: <http://w3id.org/eve#> .
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+@prefix htv: <http://www.w3.org/2011/http#> .
+@prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
+@prefix js: <https://www.w3.org/2019/wot/json-schema#> .
+
+<http://localhost:5000/smartbuilding> a td:Thing, eve:EnvironmentArtifact;
+  td:title "smartbuilding";
+  td:hasActionAffordance [ a td:ActionAffordance, eve:MakeWorkspace;
+      td:name "makeWorkspace";
+      td:hasForm [
+          htv:methodName "POST";
+          hctl:forContentType "application/json";
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms>;
+          hctl:hasOperationType td:invokeAction
+        ]
+    ];
+  eve:contains <http://localhost:5000/smartbuilding/rooms/meetingroom>, 
+    <http://localhost:5000/smartbuilding/rooms/workingroom> .
