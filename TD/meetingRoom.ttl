@@ -26,4 +26,6 @@
         ]
     ];
   eve:contains <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb1>,
-    <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb2> .
+    <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb2>,
+    <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/windowblinder1> ,
+    <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/smarttv1> .
