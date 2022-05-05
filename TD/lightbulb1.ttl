@@ -1,65 +1,40 @@
-
-@prefix eve: <http://w3id.org/eve#> .
 @prefix td: <https://www.w3.org/2019/wot/td#> .
-@prefix iot: <http://iotschema.org/> .
 @prefix htv: <http://www.w3.org/2011/http#> .
 @prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
+@prefix wotsec: <https://www.w3.org/2019/wot/security#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb1>
-  a td:Thing, eve:Artifact, iot:Light, iot:BinarySwitch;
-  td:hasActionAffordance [ a td:ActionAffordance, iot:SwitchOn;
-      td:title "Switch On";
-      td:name "switchOn";
+<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb1.ttl>
+  a td:Thing, saref:LightSwitch;
+  dct:title "Lightbulb thing";
+  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
+    ];
+  td:hasPropertyAffordance [ a td:PropertyAffordance, saref:OnOffState, js:BooleanSchema;
+      td:name "Status";
+      dct:title "Status";
+      td:hasForm [
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/status>;
+          hctl:forContentType "application/json";
+          hctl:hasOperationType td:readProperty, td:writeProperty
+        ];
+      td:isObservable false
+    ];
+  td:hasActionAffordance [ a td:ActionAffordance, saref:ToggleCommand;
+      td:name "toggle";
+      dct:title "Toggle";
       td:hasForm [
           htv:methodName "PUT";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb1/switchOn>;
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/toogle>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
-        ]
-    ], [ a td:ActionAffordance, iot:SwitchOff;
-      td:title "Switch Off";
-      td:name "switchOff";
-      td:hasForm [
-          htv:methodName "PUT";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb1/switchOff>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:invokeAction
-        ]
-    ], [ a td:ActionAffordance;
-      td:hasInputSchema [ a js:ObjectSchema;
-          js:properties [ a js:StringSchema;
-              js:propertyName "color";
+        ];
+      td:hasInputSchema [ a js:ObjectSchema, saref:OnOffState;
+          js:properties [ a js:BooleanSchema;
+              js:propertyName "status"
             ];
-          js:required "color"
-        ];
-      td:title "Set Color";
-      td:name "setColor";
-      td:hasForm [
-          htv:methodName "PUT";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb1/color>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:invokeAction
+          js:required "status"
         ]
-    ];
-  td:hasPropertyAffordance [ a td:PropertyAffordance, js:StringSchema;
-      td:title "Get State";
-      td:name "state";
-      td:hasForm [
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb1/state>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:readProperty
-        ];
-      td:isObservable false;
-    ], [ a td:PropertyAffordance, js:StringSchema;
-      td:title "Get Color";
-      td:name "color";
-      td:hasForm [
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb1/color>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:readProperty
-        ];
-      td:isObservable false;
-    ];
-  td:title "lightbulb1";
-  td:hasBase <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb1/> .
+    ] .

@@ -2,30 +2,23 @@
 @prefix td: <https://www.w3.org/2019/wot/td#> .
 @prefix htv: <http://www.w3.org/2011/http#> .
 @prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
+@prefix wotsec: <https://www.w3.org/2019/wot/security#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
+@prefix saref: <https://saref.etsi.org/core/> .
 
-<http://localhost:5000/smartbuilding/rooms/meetingroom> a eve:WorkspaceArtifact, td:Thing;
-  td:title "meetingRoom";
-  td:hasActionAffordance [ a td:ActionAffordance, eve:MakeArtifact;
-      td:name "makeArtifact";
-      td:hasForm [
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:invokeAction;
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/>;
-          htv:methodName "POST"
-        ];
-      td:hasInputSchema [ a js:ObjectSchema;
-          js:properties [ a eve:ArtifactClass, js:StringSchema;
-              js:propertyName "artifactClass"
-            ], [ a eve:ArtifactName, js:StringSchema;
-              js:propertyName "artifactName"
-            ], [ a js:ArraySchema;
-              js:propertyName "initParams"
-            ];
-          js:required "artifactClass", "artifactName"
-        ]
+<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/meetingroom.ttl>
+  a td:Thing, eve:EnvironmentArtifact;
+  dct:title "Meeting room thing";
+  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
     ];
-  eve:contains <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb1>,
-    <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb2>,
-    <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/windowblinder1> ,
-    <http://localhost:5000/smartbuilding/rooms/meetingroom/artifacts/smarttv1> .
+  td:hasActionAffordance [ a td:ActionAffordance, eve:MakeWorkspace;
+      td:name "makeMeetingRoom";
+      dct:title "Make Workspace";
+      td:hasForm [
+          htv:methodName "POST";
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/>;
+          hctl:forContentType "application/json";
+          hctl:hasOperationType td:invokeAction
+        ]
+    ] .
