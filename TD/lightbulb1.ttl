@@ -9,7 +9,7 @@
 
 <http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb1.ttl>
   a td:Thing, saref:LightSwitch;
-  dct:title "Lightbulb thing";
+  td:title "Lightbulb thing";
   td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
     ];
   td:hasPropertyAffordance [ a td:PropertyAffordance, saref:OnOffState, js:BooleanSchema;
