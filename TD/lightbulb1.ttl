@@ -27,7 +27,7 @@
       dct:title "Toggle";
       td:hasForm [
           htv:methodName "PUT";
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/toogle>;
+          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/toggle>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ];
