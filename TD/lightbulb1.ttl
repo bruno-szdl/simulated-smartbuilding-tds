@@ -13,10 +13,10 @@
   td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
     ];
   td:hasPropertyAffordance [ a td:PropertyAffordance, saref:OnOffState, js:BooleanSchema;
-      td:name "Status";
-      dct:title "Status";
+      td:name "State";
+      dct:title "State";
       td:hasForm [
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/status>;
+          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/state>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:readProperty, td:writeProperty
         ];
@@ -33,8 +33,8 @@
         ];
       td:hasInputSchema [ a js:ObjectSchema, saref:OnOffState;
           js:properties [ a js:BooleanSchema;
-              js:propertyName "status"
+              js:propertyName "state"
             ];
-          js:required "status"
+          js:required "state"
         ]
     ] .
