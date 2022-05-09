@@ -16,7 +16,7 @@
       td:name "Status";
       dct:title "Status";
       td:hasForm [
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/status>;
+          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/status>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:readProperty, td:writeProperty
         ];
@@ -27,7 +27,7 @@
       dct:title "Toggle";
       td:hasForm [
           htv:methodName "PUT";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/toogle>;
+          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/toogle>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ];
