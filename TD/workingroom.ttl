@@ -22,5 +22,5 @@
           hctl:hasOperationType td:invokeAction
         ]
     ];
-  eve:contains <http://localhost:5000/smartbuilding/rooms/workingroom/devices/lightbulb3>,
-    <http://localhost:5000/smartbuilding/rooms/workingroom/devices/lightbulb4> .
+  eve:contains <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb3.ttl>,
+    <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb4.ttl> .

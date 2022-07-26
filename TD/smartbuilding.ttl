@@ -22,5 +22,5 @@
           hctl:hasOperationType td:invokeAction
         ]
     ];
-  eve:contains <http://localhost:5000/smartbuilding/rooms/meetingroom>,
-    <http://localhost:5000/smartbuilding/rooms/workingroom> .
+  eve:contains <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/meetingroom.ttl>,
+    <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/workingroom.ttl> .
