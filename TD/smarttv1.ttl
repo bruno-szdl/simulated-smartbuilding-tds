@@ -7,25 +7,25 @@
 @prefix saref: <https://w3id.org/saref#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb1.ttl>
-  a td:Thing, saref:LightSwitch;
-  dct:title "Lightbulb thing";
+<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/smarttv1.ttl>
+  a td:Thing;
+  dct:title "Smart tv thing";
   td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
     ];
   td:hasPropertyAffordance [ a td:PropertyAffordance, saref:OnOffState, js:BooleanSchema;
       td:name "state";
       dct:title "state";
       td:hasForm [
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/state>;
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/smarttv1/state>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:readProperty, td:writeProperty
         ];
       td:isObservable false
-    ], [ a td:PropertyAffordance, js:StringSchema;
-      td:name "Color";
-      dct:title "Color";
+    ], [ a td:PropertyAffordance, js:IntegerSchema;
+      td:name "Channel";
+      dct:title "Channel";
       td:hasForm [
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/color>;
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/smarttv1/channel>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:readProperty, td:writeProperty
         ];
@@ -36,7 +36,7 @@
       dct:title "Toggle";
       td:hasForm [
           htv:methodName "PUT";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/toogle>;
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/smarttv1/toogle>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ];
@@ -51,12 +51,12 @@
       dct:title "Change channel";
       td:hasForm [
           htv:methodName "PUT";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/channel>;
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/smarttv1/channel>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ];
       td:hasInputSchema [ a js:ObjectSchema;
-          js:properties [ a js:StringSchema;
+          js:properties [ a js:IntegerSchema;
               js:propertyName "channel"
             ];
           js:required "channel"

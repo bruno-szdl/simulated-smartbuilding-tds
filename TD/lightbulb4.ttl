@@ -7,7 +7,7 @@
 @prefix saref: <https://w3id.org/saref#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb1.ttl>
+<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb4.ttl>
   a td:Thing, saref:LightSwitch;
   dct:title "Lightbulb thing";
   td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
@@ -16,16 +16,7 @@
       td:name "state";
       dct:title "state";
       td:hasForm [
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/state>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:readProperty, td:writeProperty
-        ];
-      td:isObservable false
-    ], [ a td:PropertyAffordance, js:StringSchema;
-      td:name "Color";
-      dct:title "Color";
-      td:hasForm [
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/color>;
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/workingroom/devices/lightbulb4/state>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:readProperty, td:writeProperty
         ];
@@ -36,7 +27,7 @@
       dct:title "Toggle";
       td:hasForm [
           htv:methodName "PUT";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/toogle>;
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/workingroom/devices/lightbulb4/toogle>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ];
@@ -45,20 +36,5 @@
               js:propertyName "state"
             ];
           js:required "state"
-        ]
-    ], [ a td:ActionAffordance;
-      td:name "changeChannel";
-      dct:title "Change channel";
-      td:hasForm [
-          htv:methodName "PUT";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1/channel>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:invokeAction
-        ];
-      td:hasInputSchema [ a js:ObjectSchema;
-          js:properties [ a js:StringSchema;
-              js:propertyName "channel"
-            ];
-          js:required "channel"
         ]
     ] .

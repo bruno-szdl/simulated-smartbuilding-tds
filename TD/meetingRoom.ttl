@@ -21,4 +21,6 @@
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ]
-    ] .
+    ];
+  eve:contains <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb1>,
+    <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2> .

@@ -7,20 +7,20 @@
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
 @prefix saref: <https://w3id.org/saref#> .
 
-<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/smartbuilding.ttl>
+<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/workingroom.ttl>
   a td:Thing, eve:EnvironmentArtifact;
-  dct:title "Meeting room thing";
+  dct:title "Working room thing";
   td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
     ];
   td:hasActionAffordance [ a td:ActionAffordance, eve:MakeWorkspace;
-      td:name "makeWorkspace";
+      td:name "makeWorkingRoom";
       dct:title "Make Workspace";
       td:hasForm [
           htv:methodName "POST";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/>;
+          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/workingroom/devices/>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ]
     ];
-  eve:contains <http://localhost:5000/smartbuilding/rooms/meetingroom>,
-    <http://localhost:5000/smartbuilding/rooms/workingroom> .
+  eve:contains <http://localhost:5000/smartbuilding/rooms/workingroom/devices/lightbulb3>,
+    <http://localhost:5000/smartbuilding/rooms/workingroom/devices/lightbulb4> .
