@@ -17,7 +17,7 @@
       dct:title "Make Workspace";
       td:hasForm [
           htv:methodName "POST";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/workingroom/devices/>;
+          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/workingroom/devices/>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ]

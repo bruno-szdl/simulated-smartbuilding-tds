@@ -16,7 +16,7 @@
       td:name "state";
       dct:title "state";
       td:hasForm [
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2/state>;
+          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2/state>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:readProperty, td:writeProperty
         ];
@@ -25,7 +25,7 @@
       td:name "Color";
       dct:title "Color";
       td:hasForm [
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2/color>;
+          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2/color>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:readProperty, td:writeProperty
         ];
@@ -36,7 +36,7 @@
       dct:title "Toggle";
       td:hasForm [
           htv:methodName "PUT";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2/toogle>;
+          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2/toogle>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ];
@@ -51,7 +51,7 @@
       dct:title "Change channel";
       td:hasForm [
           htv:methodName "PUT";
-          hctl:hasTarget <http://localhost:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2/channel>;
+          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2/channel>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ];
