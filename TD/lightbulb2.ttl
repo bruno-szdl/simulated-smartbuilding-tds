@@ -2,19 +2,19 @@
 @prefix htv: <http://www.w3.org/2011/http#> .
 @prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
 @prefix wotsec: <https://www.w3.org/2019/wot/security#> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix td: <http://purl.org/dc/terms/> .
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
 @prefix saref: <https://w3id.org/saref#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb2.ttl>
  a td:Thing, saref:LightSwitch;
- dct:title "Lightbulb thing";
+ td:title "Lightbulb thing";
  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
    ];
  td:hasPropertyAffordance [ a td:PropertyAffordance, saref:OnOffState, js:BooleanSchema;
      td:name "state";
-     dct:title "state";
+     td:title "state";
      td:hasForm [
          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb2/state>;
          hctl:forContentType "application/json";
@@ -23,7 +23,7 @@
      td:isObservable false
    ], [ a td:PropertyAffordance, js:StringSchema;
      td:name "Color";
-     dct:title "Color";
+     td:title "Color";
      td:hasForm [
          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb2/color>;
          hctl:forContentType "application/json";
@@ -33,7 +33,7 @@
    ];
  td:hasActionAffordance [ a td:ActionAffordance, saref:ToggleCommand;
      td:name "toggle";
-     dct:title "Toggle";
+     td:title "Toggle";
      td:hasForm [
          htv:methodName "PUT";
          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb2/toogle>;
@@ -48,7 +48,7 @@
        ]
    ], [ a td:ActionAffordance;
      td:name "changeColor";
-     dct:title "Change color";
+     td:title "Change color";
      td:hasForm [
          htv:methodName "PUT";
          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/lightbulb2/color>;

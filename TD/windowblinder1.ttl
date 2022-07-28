@@ -2,19 +2,19 @@
 @prefix htv: <http://www.w3.org/2011/http#> .
 @prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
 @prefix wotsec: <https://www.w3.org/2019/wot/security#> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix td: <http://purl.org/dc/terms/> .
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
 @prefix saref: <https://w3id.org/saref#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/windowblinder1.ttl>
  a td:Thing;
- dct:title "Window blinder thing";
+ td:title "Window blinder thing";
  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
    ];
  td:hasPropertyAffordance [ a td:PropertyAffordance, js:StringSchema;
      td:name "state";
-     dct:title "state";
+     td:title "state";
      td:hasForm [
          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/windowblinder1/state>;
          hctl:forContentType "application/json";
@@ -24,7 +24,7 @@
    ];
    [ a td:ActionAffordance;
      td:name "changeState";
-     dct:title "Change state";
+     td:title "Change state";
      td:hasForm [
          htv:methodName "PUT";
          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/windowblinder1/state>;
