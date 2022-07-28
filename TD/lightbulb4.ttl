@@ -8,33 +8,33 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb4.ttl>
-  a td:Thing, saref:LightSwitch;
-  dct:title "Lightbulb thing";
-  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
-    ];
-  td:hasPropertyAffordance [ a td:PropertyAffordance, saref:OnOffState, js:BooleanSchema;
-      td:name "state";
-      dct:title "state";
-      td:hasForm [
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/workingroom/devices/lightbulb4/state>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:readProperty, td:writeProperty
-        ];
-      td:isObservable false
-    ];
-  td:hasActionAffordance [ a td:ActionAffordance, saref:ToggleCommand;
-      td:name "toggle";
-      dct:title "Toggle";
-      td:hasForm [
-          htv:methodName "PUT";
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/workingroom/devices/lightbulb4/toogle>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:invokeAction
-        ];
-      td:hasInputSchema [ a js:ObjectSchema, saref:OnOffState;
-          js:properties [ a js:BooleanSchema;
-              js:propertyName "state"
-            ];
-          js:required "state"
-        ]
-    ] .
+ a td:Thing, saref:LightSwitch;
+ dct:title "Lightbulb thing";
+ td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
+   ];
+ td:hasPropertyAffordance [ a td:PropertyAffordance, saref:OnOffState, js:BooleanSchema;
+     td:name "state";
+     dct:title "state";
+     td:hasForm [
+         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/workingroom/artifacts/lightbulb4/state>;
+         hctl:forContentType "application/json";
+         hctl:hasOperationType td:readProperty, td:writeProperty
+       ];
+     td:isObservable false
+   ];
+ td:hasActionAffordance [ a td:ActionAffordance, saref:ToggleCommand;
+     td:name "toggle";
+     dct:title "Toggle";
+     td:hasForm [
+         htv:methodName "PUT";
+         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/workingroom/artifacts/lightbulb4/toogle>;
+         hctl:forContentType "application/json";
+         hctl:hasOperationType td:invokeAction
+       ];
+     td:hasInputSchema [ a js:ObjectSchema, saref:OnOffState;
+         js:properties [ a js:BooleanSchema;
+             js:propertyName "state"
+           ];
+         js:required "state"
+       ]
+   ] .

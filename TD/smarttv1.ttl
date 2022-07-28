@@ -8,57 +8,57 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/smarttv1.ttl>
-  a td:Thing;
-  dct:title "Smart tv thing";
-  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
-    ];
-  td:hasPropertyAffordance [ a td:PropertyAffordance, saref:OnOffState, js:BooleanSchema;
-      td:name "state";
-      dct:title "state";
-      td:hasForm [
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/smarttv1/state>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:readProperty, td:writeProperty
-        ];
-      td:isObservable false
-    ], [ a td:PropertyAffordance, js:IntegerSchema;
-      td:name "Channel";
-      dct:title "Channel";
-      td:hasForm [
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/smarttv1/channel>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:readProperty, td:writeProperty
-        ];
-      td:isObservable false
-    ];
-  td:hasActionAffordance [ a td:ActionAffordance, saref:ToggleCommand;
-      td:name "toggle";
-      dct:title "Toggle";
-      td:hasForm [
-          htv:methodName "PUT";
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/smarttv1/toogle>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:invokeAction
-        ];
-      td:hasInputSchema [ a js:ObjectSchema, saref:OnOffState;
-          js:properties [ a js:BooleanSchema;
-              js:propertyName "state"
-            ];
-          js:required "state"
-        ]
-    ], [ a td:ActionAffordance;
-      td:name "changeChannel";
-      dct:title "Change channel";
-      td:hasForm [
-          htv:methodName "PUT";
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/smarttv1/channel>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:invokeAction
-        ];
-      td:hasInputSchema [ a js:ObjectSchema;
-          js:properties [ a js:IntegerSchema;
-              js:propertyName "channel"
-            ];
-          js:required "channel"
-        ]
-    ] .
+ a td:Thing;
+ dct:title "Smart tv thing";
+ td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
+   ];
+ td:hasPropertyAffordance [ a td:PropertyAffordance, saref:OnOffState, js:BooleanSchema;
+     td:name "state";
+     dct:title "state";
+     td:hasForm [
+         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/smarttv1/state>;
+         hctl:forContentType "application/json";
+         hctl:hasOperationType td:readProperty, td:writeProperty
+       ];
+     td:isObservable false
+   ], [ a td:PropertyAffordance, js:IntegerSchema;
+     td:name "Channel";
+     dct:title "Channel";
+     td:hasForm [
+         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/smarttv1/channel>;
+         hctl:forContentType "application/json";
+         hctl:hasOperationType td:readProperty, td:writeProperty
+       ];
+     td:isObservable false
+   ];
+ td:hasActionAffordance [ a td:ActionAffordance, saref:ToggleCommand;
+     td:name "toggle";
+     dct:title "Toggle";
+     td:hasForm [
+         htv:methodName "PUT";
+         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/smarttv1/toogle>;
+         hctl:forContentType "application/json";
+         hctl:hasOperationType td:invokeAction
+       ];
+     td:hasInputSchema [ a js:ObjectSchema, saref:OnOffState;
+         js:properties [ a js:BooleanSchema;
+             js:propertyName "state"
+           ];
+         js:required "state"
+       ]
+   ], [ a td:ActionAffordance;
+     td:name "changeChannel";
+     dct:title "Change channel";
+     td:hasForm [
+         htv:methodName "PUT";
+         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/smarttv1/channel>;
+         hctl:forContentType "application/json";
+         hctl:hasOperationType td:invokeAction
+       ];
+     td:hasInputSchema [ a js:ObjectSchema;
+         js:properties [ a js:IntegerSchema;
+             js:propertyName "channel"
+           ];
+         js:required "channel"
+       ]
+   ] .

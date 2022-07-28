@@ -8,21 +8,21 @@
 @prefix saref: <https://w3id.org/saref#> .
 
 <http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/meetingroom.ttl>
-  a td:Thing, eve:EnvironmentArtifact;
-  dct:title "Meeting room thing";
-  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
-    ];
-  td:hasActionAffordance [ a td:ActionAffordance, eve:MakeWorkspace;
-      td:name "makeMeetingRoom";
-      dct:title "Make Workspace";
-      td:hasForm [
-          htv:methodName "POST";
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:invokeAction
-        ]
-    ];
-  eve:contains <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb1.ttl>,
-    <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb2.ttl>,
-    <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/smarttv1.ttl>,
-    <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/windowblinder1.ttl> .
+ a td:Thing, eve:EnvironmentArtifact;
+ dct:title "Meeting room thing";
+ td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
+   ];
+ td:hasActionAffordance [ a td:ActionAffordance, eve:MakeWorkspace;
+     td:name "makeMeetingRoom";
+     dct:title "Make Workspace";
+     td:hasForm [
+         htv:methodName "POST";
+         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/>;
+         hctl:forContentType "application/json";
+         hctl:hasOperationType td:invokeAction
+       ]
+   ];
+ eve:contains <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb1.ttl>,
+   <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb2.ttl>,
+   <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/smarttv1.ttl>,
+   <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/windowblinder1.ttl> .

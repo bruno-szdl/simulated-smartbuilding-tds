@@ -8,33 +8,33 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/windowblinder1.ttl>
-  a td:Thing;
-  dct:title "Window blinder thing";
-  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
-    ];
-  td:hasPropertyAffordance [ a td:PropertyAffordance, js:StringSchema;
-      td:name "state";
-      dct:title "state";
-      td:hasForm [
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/windowblinder1/state>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:readProperty, td:writeProperty
-        ];
-      td:isObservable false
-    ];
-    [ a td:ActionAffordance;
-      td:name "changeState";
-      dct:title "Change state";
-      td:hasForm [
-          htv:methodName "PUT";
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/windowblinder1/state>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:invokeAction
-        ];
-      td:hasInputSchema [ a js:ObjectSchema;
-          js:properties [ a js:StringSchema;
-              js:propertyName "state"
-            ];
-          js:required "state"
-        ]
-    ] .
+ a td:Thing;
+ dct:title "Window blinder thing";
+ td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
+   ];
+ td:hasPropertyAffordance [ a td:PropertyAffordance, js:StringSchema;
+     td:name "state";
+     dct:title "state";
+     td:hasForm [
+         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/windowblinder1/state>;
+         hctl:forContentType "application/json";
+         hctl:hasOperationType td:readProperty, td:writeProperty
+       ];
+     td:isObservable false
+   ];
+   [ a td:ActionAffordance;
+     td:name "changeState";
+     dct:title "Change state";
+     td:hasForm [
+         htv:methodName "PUT";
+         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/windowblinder1/state>;
+         hctl:forContentType "application/json";
+         hctl:hasOperationType td:invokeAction
+       ];
+     td:hasInputSchema [ a js:ObjectSchema;
+         js:properties [ a js:StringSchema;
+             js:propertyName "state"
+           ];
+         js:required "state"
+       ]
+   ] .
