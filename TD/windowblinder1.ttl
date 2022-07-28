@@ -22,7 +22,7 @@
        ];
      td:isObservable false
    ];
-   [ a td:ActionAffordance;
+ td:hasActionAffordance [ a td:ActionAffordance;
      td:name "changeState";
      td:title "Change state";
      td:hasForm [
