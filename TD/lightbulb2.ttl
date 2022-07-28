@@ -47,18 +47,18 @@
           js:required "state"
         ]
     ], [ a td:ActionAffordance;
-      td:name "changeChannel";
-      dct:title "Change channel";
+      td:name "changeColor";
+      dct:title "Change color";
       td:hasForm [
           htv:methodName "PUT";
-          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2/channel>;
+          hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/devices/lightbulb2/color>;
           hctl:forContentType "application/json";
           hctl:hasOperationType td:invokeAction
         ];
       td:hasInputSchema [ a js:ObjectSchema;
           js:properties [ a js:StringSchema;
-              js:propertyName "channel"
+              js:propertyName "color"
             ];
-          js:required "channel"
+          js:required "color"
         ]
     ] .
