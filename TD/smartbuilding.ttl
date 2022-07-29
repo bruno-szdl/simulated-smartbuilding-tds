@@ -7,20 +7,18 @@
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
 @prefix saref: <https://w3id.org/saref#> .
 
-<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/smartbuilding.ttl>
- a td:Thing, eve:EnvironmentArtifact;
- td:title "Meeting room thing";
- td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
-   ];
- td:hasActionAffordance [ a td:ActionAffordance, eve:MakeWorkspace;
-     td:name "makeWorkspace";
-     td:title "Make Workspace";
-     td:hasForm [
-         htv:methodName "POST";
-         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/>;
-         hctl:forContentType "application/json";
-         hctl:hasOperationType td:invokeAction
-       ]
-   ];
- eve:contains <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/meetingroom.ttl>,
-   <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/workingroom.ttl> .
+<http://192.168.15.8:8080/environments/smartbuilding> a td:Thing, eve:EnvironmentArtifact;
+  td:title "smartbuilding";
+  td:hasActionAffordance [ a td:ActionAffordance, eve:MakeWorkspace;
+      td:name "makeWorkspace";
+      td:hasForm [
+          hctl:forContentType "application/json";
+          hctl:hasOperationType td:invokeAction;
+          hctl:hasTarget <http://192.168.15.8:8080/environments/smartbuilding/workspaces/>;
+          htv:methodName "POST"
+        ]
+    ];
+  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
+    ];
+  eve:contains <http://192.168.15.8:8080/environments/smartbuilding/workspaces/meetingroom>,
+    <http://192.168.15.8:8080/environments/smartbuilding/workspaces/workingroom> .

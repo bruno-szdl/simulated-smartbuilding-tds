@@ -7,20 +7,29 @@
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
 @prefix saref: <https://w3id.org/saref#> .
 
-<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/workingroom.ttl>
- a td:Thing, eve:EnvironmentArtifact;
- td:title "Working room thing";
- td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
-   ];
- td:hasActionAffordance [ a td:ActionAffordance, eve:MakeWorkspace;
-     td:name "makeWorkingRoom";
-     td:title "Make Workspace";
-     td:hasForm [
-         htv:methodName "POST";
-         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/workingroom/artifacts/>;
-         hctl:forContentType "application/json";
-         hctl:hasOperationType td:invokeAction
-       ]
-   ];
- eve:contains <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb3.ttl>,
-   <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb4.ttl> .
+<http://192.168.15.8:8080/environments/smartbuilding/workspaces/workingroom> a td:Thing,
+    eve:WorkspaceArtifact;
+  eve:contains <http://192.168.15.8:8080/environments/smartbuilding/workspaces/workingroom/artifacts/lightbulb3/>,
+    <http://192.168.15.8:8080/environments/smartbuilding/workspaces/workingroom/artifacts/lightbulb4/>;
+  td:hasActionAffordance [ a eve:MakeArtifact, td:ActionAffordance;
+      td:hasInputSchema [ a js:ObjectSchema;
+          js:properties [ a js:ArraySchema;
+              js:propertyName "initParams"
+            ], [ a eve:ArtifactName, js:StringSchema;
+              js:propertyName "artifactName"
+            ], [ a eve:ArtifactClass, js:StringSchema;
+              js:propertyName "artifactClass"
+            ];
+          js:required "artifactClass", "artifactName"
+        ];
+      td:hasForm [
+          hctl:hasOperationType td:invokeAction;
+          htv:methodName "POST";
+          hctl:forContentType "application/json";
+          hctl:hasTarget <http://192.168.15.8:8080/environments/smartbuilding/workspaces/meetingroom/artifacts/>
+        ];
+      td:name "makeArtifact"
+    ];
+  td:title "workingroom";
+  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
+    ] .

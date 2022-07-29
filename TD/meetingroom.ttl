@@ -7,22 +7,31 @@
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
 @prefix saref: <https://w3id.org/saref#> .
 
-<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/meetingroom.ttl>
- a td:Thing, eve:EnvironmentArtifact;
- td:title "Meeting room thing";
- td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
-   ];
- td:hasActionAffordance [ a td:ActionAffordance, eve:MakeWorkspace;
-     td:name "makeMeetingRoom";
-     td:title "Make Workspace";
-     td:hasForm [
-         htv:methodName "POST";
-         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/>;
-         hctl:forContentType "application/json";
-         hctl:hasOperationType td:invokeAction
-       ]
-   ];
- eve:contains <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb1.ttl>,
-   <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/lightbulb2.ttl>,
-   <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/smarttv1.ttl>,
-   <https://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/windowblinder1.ttl> .
+<http://192.168.15.8:8080/environments/smartbuilding/workspaces/meetingroom> a eve:WorkspaceArtifact,
+    td:Thing;
+  eve:contains <http://192.168.15.8:8080/environments/smartbuilding/workspaces/meetingroom/artifacts/windowblinder1/>,
+    <http://192.168.15.8:8080/environments/smartbuilding/workspaces/meetingroom/artifacts/lightbulb1/>,
+    <http://192.168.15.8:8080/environments/smartbuilding/workspaces/meetingroom/artifacts/lightbulb2/>,
+    <http://192.168.15.8:8080/environments/smartbuilding/workspaces/meetingroom/artifacts/smarttv1/>;
+  td:hasActionAffordance [ a eve:MakeArtifact, td:ActionAffordance;
+      td:hasForm [
+          htv:methodName "POST";
+          hctl:hasTarget <http://192.168.15.8:8080/environments/smartbuilding/workspaces/meetingroom/artifacts/>;
+          hctl:hasOperationType td:invokeAction;
+          hctl:forContentType "application/json"
+        ];
+      td:hasInputSchema [ a js:ObjectSchema;
+          js:required "artifactName", "artifactClass";
+          js:properties [ a js:StringSchema, eve:ArtifactName;
+              js:propertyName "artifactName"
+            ], [ a js:StringSchema, eve:ArtifactClass;
+              js:propertyName "artifactClass"
+            ], [ a js:ArraySchema;
+              js:propertyName "initParams"
+            ]
+        ];
+      td:name "makeArtifact"
+    ];
+  td:title "meetingroom";
+  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
+    ] .

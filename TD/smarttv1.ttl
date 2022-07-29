@@ -1,3 +1,4 @@
+@prefix eve: <http://w3id.org/eve#> .
 @prefix td: <https://www.w3.org/2019/wot/td#> .
 @prefix htv: <http://www.w3.org/2011/http#> .
 @prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
@@ -5,60 +6,56 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
 @prefix saref: <https://w3id.org/saref#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://raw.githubusercontent.com/bruno-szdl/simulated-smartbuilding-tds/main/TD/smarttv1.ttl>
- a td:Thing;
- td:title "Smart tv thing";
- td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
-   ];
- td:hasPropertyAffordance [ a td:PropertyAffordance, saref:OnOffState, js:BooleanSchema;
-     td:name "state";
-     td:title "state";
-     td:hasForm [
-         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/smarttv1/state>;
-         hctl:forContentType "application/json";
-         hctl:hasOperationType td:readProperty, td:writeProperty
-       ];
-     td:isObservable false
-   ], [ a td:PropertyAffordance, js:IntegerSchema;
-     td:name "Channel";
-     td:title "Channel";
-     td:hasForm [
-         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/smarttv1/channel>;
-         hctl:forContentType "application/json";
-         hctl:hasOperationType td:readProperty, td:writeProperty
-       ];
-     td:isObservable false
-   ];
- td:hasActionAffordance [ a td:ActionAffordance, saref:ToggleCommand;
-     td:name "toggle";
-     td:title "Toggle";
-     td:hasForm [
-         htv:methodName "PUT";
-         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/smarttv1/toggle>;
-         hctl:forContentType "application/json";
-         hctl:hasOperationType td:invokeAction
-       ];
-     td:hasInputSchema [ a js:ObjectSchema, saref:OnOffState;
-         js:properties [ a js:BooleanSchema;
-             js:propertyName "state"
-           ];
-         js:required "state"
-       ]
-   ], [ a td:ActionAffordance;
-     td:name "changeChannel";
-     td:title "Change channel";
-     td:hasForm [
-         htv:methodName "PUT";
-         hctl:hasTarget <http://192.168.15.8:5000/smartbuilding/rooms/meetingroom/artifacts/smarttv1/channel>;
-         hctl:forContentType "application/json";
-         hctl:hasOperationType td:invokeAction
-       ];
-     td:hasInputSchema [ a js:ObjectSchema;
-         js:properties [ a js:IntegerSchema;
-             js:propertyName "channel"
-           ];
-         js:required "channel"
-       ]
-   ] .
+<http://192.168.15.8:8080/environments/smartbuilding/workspaces/meetingroom/artifacts/smarttv1>
+  a td:Thing;
+  td:hasBase <http://192.168.15.8:5000/environments/smartbuilding/workspaces/meetingroom/artifacts/smarttv1/>;
+  td:title "smarttv";
+  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
+    ];
+  td:hasPropertyAffordance [ a js:IntegerSchema, td:PropertyAffordance;
+      td:isObservable false;
+      td:name "Channel";
+      td:hasForm [
+          hctl:hasTarget <http://192.168.15.8:5000/environments/smartbuilding/workspaces/meetingroom/artifacts/smarttv1/channel>;
+          hctl:forContentType "application/json";
+          hctl:hasOperationType td:writeProperty, td:readProperty
+        ]
+    ], [ a js:BooleanSchema, td:PropertyAffordance, saref:OnOffState;
+      td:isObservable false;
+      td:hasForm [
+          hctl:forContentType "application/json";
+          hctl:hasTarget <http://192.168.15.8:5000/environments/smartbuilding/workspaces/meetingroom/artifacts/smarttv1/state>;
+          hctl:hasOperationType td:readProperty, td:writeProperty
+        ];
+      td:name "state"
+    ];
+  td:hasActionAffordance [ a td:ActionAffordance;
+      td:hasInputSchema [ a js:ObjectSchema;
+          js:required "channel";
+          js:properties [ a js:IntegerSchema;
+              js:propertyName "channel"
+            ]
+        ];
+      td:hasForm [
+          htv:methodName "PUT";
+          hctl:hasOperationType td:invokeAction;
+          hctl:forContentType "application/json";
+          hctl:hasTarget <http://192.168.15.8:5000/environments/smartbuilding/workspaces/meetingroom/artifacts/smarttv1/channel>
+        ];
+      td:name "changeChannel"
+    ], [ a saref:ToggleCommand, td:ActionAffordance;
+      td:hasInputSchema [ a js:ObjectSchema, saref:OnOffState;
+          js:properties [ a js:BooleanSchema;
+              js:propertyName "state"
+            ];
+          js:required "state"
+        ];
+      td:name "toggle";
+      td:hasForm [
+          hctl:hasTarget <http://192.168.15.8:5000/environments/smartbuilding/workspaces/meetingroom/artifacts/smarttv1/toggle>;
+          htv:methodName "PUT";
+          hctl:hasOperationType td:invokeAction;
+          hctl:forContentType "application/json"
+        ]
+    ] .
